@@ -12,11 +12,11 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias   = "my_account"
+  alias   = "myaccount"
   region  = local.global.config.aws_default_region
   version = "~> 2.21"
   assume_role {
-    role_arn    = "arn:aws:iam::${local.account.config.account_id}:role/${local.global.config.account_access_role_name}"
+    role_arn    = "arn:aws:iam::${local.myaccount.config.account_id}:role/${local.global.config.account_access_role_name}"
     external_id = "terraform"
   }
 }

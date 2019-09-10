@@ -1,1 +1,2 @@
 variable "global" {}
+variable "master" {}

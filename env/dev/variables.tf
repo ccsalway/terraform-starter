@@ -14,4 +14,14 @@ locals {
       account_access_role_name = "AdminAccessRole"
     }
   }
+  master = {
+    config = {
+      # master account variables
+    }
+  }
+  myaccount = {
+    config = {
+      # organization account variables
+    }
+  }
 }
