@@ -1,28 +1,38 @@
 # passed in by env vars (TF_VAR)
 variable "aws_default_region" {}
 variable "state_bucket_name" {}
+variable "state_file_postfix" {}
 variable "dns_primary_domain" {}
 
 
 locals {
   global = {
     config = {
-      output_test         = "return me"
-      aws_default_region  = var.aws_default_region
-      state_bucket_name   = var.state_bucket_name
-      dns_primary_domain  = var.dns_primary_domain
-      org_admin_role_name = "AdminAccessRole"
+      aws_default_region = var.aws_default_region
+      state_bucket_name  = var.state_bucket_name
+      state_file_postfix = var.state_file_postfix
+      dns_primary_domain = var.dns_primary_domain
+    }
+  }
+  organization = {
+    config = {
+      admin_role_name = "AdminAccessRole"
+      service_access_principals = [
+        # "cloudtrail.amazonaws.com",
+        # "ds.amazonaws.com",
+        # "sso.amazonaws.com",
+        # "config.amazonaws.com",
+      ]
     }
   }
   master = {
     config = {
-      # master account variables
     }
   }
   child = {
     config = {
       account_name  = "child"
-      account_email = "child@${var.dns_primary_domain}"
+      account_email = "ccsalway+aws-child@${var.dns_primary_domain}"
     }
   }
 }
