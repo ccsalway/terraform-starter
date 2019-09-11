@@ -31,6 +31,8 @@ terraform init \
    -backend-config="key=${target}.${TF_VAR_state_file_postfix}.tfstate" \
    -backend-config="dynamodb_table=${TF_VAR_state_dynamodb_table}"
 
+tflint --deep --module --aws-profile=${AWS_PROFILE} --aws-region=${AWS_DEFAULT_REGION} .
+
 case $1 in
    "remove")
        (set -x; terraform state rm ${options})
