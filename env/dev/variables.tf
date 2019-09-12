@@ -32,7 +32,7 @@ locals {
   child = {
     config = {
       account_name  = "child"
-      account_email = "ccsalway+aws-child@${var.dns_primary_domain}"
+      account_email = "awsaccount-child@${var.dns_primary_domain}"
     }
   }
 }

@@ -1,5 +1,9 @@
 Starter layout for Terraform 0.12 projects.
 
+**Setup**  
+Modify `./env/<env>/source.sh` file.  
+Run `./setup.sh <env>` to create S3 bucket and dynamodb table.
+
 **Usage**  
 `Usage: ./action.sh <action> <env> <target> [options]`
 
