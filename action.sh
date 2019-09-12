@@ -5,7 +5,7 @@
 action=$1;env=$2;target=$3;options=${@:4}
 
 [[ ! -d "./env/${env}" ]] && { echo "./env/${env} not found"; exit 1; }
-[[ ! -d "./source/${target}" ]] && { echo "./source/${target} not found"; exit 1; }
+[[ ! -d "./targets/${target}" ]] && { echo "./targets/${target} not found"; exit 1; }
 
 source ./env/${env}/source.sh
 
@@ -13,7 +13,7 @@ tmp=$(mktemp -d)
 trap "rm -rf ${tmp}" EXIT
 
 cp -LR ./env/${env}/ ${tmp}/
-cp -LR ./source/${target}/ ${tmp}/
+cp -LR ./targets/${target}/ ${tmp}/
 
 if [[ -d "./modules" ]]; then
     mkdir -p /tmp/tfmodules
