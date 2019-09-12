@@ -1,6 +1,6 @@
 #!/bin/bash -o errexit
 
-[[ -z "$1" || -z "$2" || $1 == "help" ]] && { echo "Usage: $0 action env target [options]"; exit 1; }
+[[ -z "$1" || -z "$2" || -z "$3" || $1 == "help" ]] && { echo "Usage: $0 <action> <env> <target> [options]"; exit 1; }
 
 action=$1;env=$2;target=$3;options=${@:4}
 
@@ -30,8 +30,6 @@ terraform init \
    -backend-config="bucket=${TF_VAR_state_bucket_name}" \
    -backend-config="key=${target}.${TF_VAR_state_file_postfix}.tfstate" \
    -backend-config="dynamodb_table=${TF_VAR_state_dynamodb_table}"
-
-tflint --deep --module --aws-profile=${AWS_PROFILE} --aws-region=${AWS_DEFAULT_REGION} .
 
 case $1 in
    "remove")

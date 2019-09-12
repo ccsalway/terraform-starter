@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ -z "$1" || $1 == "help" ]] && { echo "Usage: $0 env"; exit 1; }
+[[ -z "$1" || $1 == "help" ]] && { echo "Usage: $0 <env>"; exit 1; }
 
 env=$1
 
