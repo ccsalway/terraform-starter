@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias   = "child-useast1"
+  alias   = "useast1"
   region  = "us-east-1"
   version = "~> 2.21"
   assume_role {
