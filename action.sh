@@ -9,6 +9,8 @@ action=$1;env=$2;target=$3;options=${@:4}
 
 source ./env/${env}/source.sh
 
+export TF_VAR_state_file_name="${TF_VAR_state_file_prefix}.${target}"
+
 tmp=$(mktemp -d)
 trap "rm -rf ${tmp}" EXIT
 
@@ -28,7 +30,7 @@ pushd ${tmp}
 terraform init \
    -backend-config="region=${TF_VAR_aws_default_region}" \
    -backend-config="bucket=${TF_VAR_state_bucket_name}" \
-   -backend-config="key=${target}.${TF_VAR_state_file_postfix}.tfstate" \
+   -backend-config="key=${TF_VAR_state_file_name}.tfstate" \
    -backend-config="dynamodb_table=${TF_VAR_state_dynamodb_table}"
 
 case $1 in

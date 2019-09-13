@@ -5,8 +5,8 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias   = "child-useast1"
-  region  = "us-east-1"
+  alias   = "child"
+  region  = local.global.config.aws_default_region
   version = "~> 2.21"
   assume_role {
     role_arn    = "arn:aws:iam::${aws_organizations_account.child.id}:role/${local.organization.config.admin_role_name}"
@@ -15,8 +15,8 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias   = "child"
-  region  = local.global.config.aws_default_region
+  alias   = "child-useast1"
+  region  = "us-east-1"
   version = "~> 2.21"
   assume_role {
     role_arn    = "arn:aws:iam::${aws_organizations_account.child.id}:role/${local.organization.config.admin_role_name}"

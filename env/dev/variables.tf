@@ -1,7 +1,7 @@
 # passed in by env vars (TF_VAR)
 variable "aws_default_region" {}
 variable "state_bucket_name" {}
-variable "state_file_postfix" {}
+variable "state_file_prefix" {}
 variable "dns_primary_domain" {}
 
 
@@ -10,7 +10,7 @@ locals {
     config = {
       aws_default_region = var.aws_default_region
       state_bucket_name  = var.state_bucket_name
-      state_file_postfix = var.state_file_postfix
+      state_file_prefix = var.state_file_prefix
       dns_primary_domain = var.dns_primary_domain
     }
   }
