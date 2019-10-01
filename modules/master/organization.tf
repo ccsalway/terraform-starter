@@ -1,4 +1,4 @@
 resource "aws_organizations_organization" "org" {
-  aws_service_access_principals = var.organization.config.service_access_principals
+  aws_service_access_principals = var.config.organization.service_access_principals
   feature_set                   = "ALL"
 }

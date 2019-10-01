@@ -1,6 +1,6 @@
 provider "aws" {
   # master
-  region  = local.global.config.aws_default_region
+  region  = local.config.global.aws_default_region
   version = "~> 2.21"
 }
 
